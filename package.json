@@ -6,14 +6,15 @@
     "services:down": "docker compose -f infra/compose.yaml down",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "test": "jest",
-    "test:watch": "jest --watchAll",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watchAll --runInBand",
     "migration:create": "node-pg-migrate -m infra/migrations create",
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "dotenv": "^16.4.4",
+    "dotenv-expand": "11.0.6",
     "lucide-react": "^0.564.0",
     "next": "^16.1.6",
     "pg": "8.11.3",
