@@ -6,7 +6,7 @@
     "services:down": "docker compose -f infra/compose.yaml down",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "test": "jest --runInBand",
+    "test": "npm run services:up && concurrently -n next,jest --hide next -k \"next dev\" -s command-jest \"jest --runInBand\"",
     "test:watch": "jest --watchAll --runInBand",
     "migration:create": "node-pg-migrate -m infra/migrations create",
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
+    "async-retry": "1.3.3",
     "dotenv": "^16.4.4",
     "dotenv-expand": "11.0.6",
     "lucide-react": "^0.564.0",
@@ -25,8 +26,10 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "@types/async-retry": "^1.4.9",
     "@types/jest": "^30.0.0",
     "@types/react": "19.2.14",
+    "concurrently": "^9.2.1",
     "jest": "^30.2.0",
     "node-pg-migrate": "6.2.2",
     "prettier": "^3.8.1",
