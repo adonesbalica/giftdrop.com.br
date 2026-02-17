@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Gift, ArrowRight, Sparkles, PartyPopper, Clock } from "lucide-react";
+import { Logo } from "@/components/logo";
 
 function AnimatedDot({ delay }: { delay: number }) {
   return (
@@ -65,14 +66,7 @@ export default function Page() {
         }`}
       >
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F97316] shadow-lg shadow-[#F97316]/30">
-            <Gift className="h-7 w-7 text-white" />
-          </div>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            GiftDrop
-          </h1>
-        </div>
+        <Logo />
 
         {/* Status badge */}
         <div className="flex items-center gap-2 rounded-full border border-[#3A332F] bg-[#2A2421] px-4 py-2">
@@ -101,7 +95,7 @@ export default function Page() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-3">
           <Link
-            href="/"
+            href="/sign-in"
             className="inline-flex items-center gap-2 rounded-xl bg-[#F97316] px-8 py-3 text-base font-semibold text-white shadow-lg shadow-[#F97316]/25 transition-all hover:brightness-110 active:scale-[0.98]"
           >
             Try the Preview
