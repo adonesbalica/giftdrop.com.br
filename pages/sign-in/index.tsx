@@ -1,5 +1,5 @@
-import { LoginForm } from "@/components/login-form";
 import { Logo } from "@/components/logo";
+import SignInFormContainer from "@/components/sign-in-form/container";
 import Link from "next/link";
 
 export default function SignInPage() {
@@ -21,11 +21,14 @@ export default function SignInPage() {
           Sign in to manage your wishlist.
         </p>
 
-        <LoginForm />
+        <SignInFormContainer />
 
         <p className="mt-6 text-center text-sm text-(--muted-foreground)">
           Don&apos;t have an account?{" "}
-          <Link href="/sign-up" className="cursor-pointer text-(--primary) hover:opacity-80">
+          <Link
+            href="/sign-up"
+            className="cursor-pointer text-(--primary) hover:opacity-80"
+          >
             Create one
           </Link>
         </p>

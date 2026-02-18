@@ -1,29 +1,34 @@
 import { LogIn } from "lucide-react";
 import { AuthInput } from "../auth-input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, type SubmitHandler } from "react-hook-form";
-import { loginFormSchema, LoginFormInputs } from "@/types/login-form-type";
+import {
+  type FieldErrors,
+  type SubmitHandler,
+  type UseFormHandleSubmit,
+  type UseFormRegister,
+} from "react-hook-form";
+import type { SignInFormInputs } from "@/types/sign-in-form-type";
 
-export function LoginForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormInputs>({
-    resolver: zodResolver(loginFormSchema),
-  });
+interface SignInFormProps {
+  register: UseFormRegister<SignInFormInputs>;
+  errors: FieldErrors<SignInFormInputs>;
+  handleSubmit: UseFormHandleSubmit<SignInFormInputs>;
+  onSubmit: SubmitHandler<SignInFormInputs>;
+}
 
-  const handleLoginForm: SubmitHandler<LoginFormInputs> = (data) => {
-    console.log(data);
-  };
-
+export function SignInForm({
+  errors,
+  handleSubmit,
+  onSubmit,
+  register,
+}: SignInFormProps) {
   return (
-    <form className="mt-6 space-y-5" onSubmit={handleSubmit(handleLoginForm)}>
+    <form className="mt-6 space-y-5" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-1">
         <AuthInput
           label="Email"
           type="email"
-          placeholder="Enter your e-mail"
+          placeholder="you@example.com"
+          autoComplete="email"
           {...register("email")}
         />{" "}
         {errors.email && (
@@ -36,6 +41,7 @@ export function LoginForm() {
           label="Password"
           type="password"
           placeholder="Enter your password"
+          autoComplete="current-password"
           {...register("password")}
         />
         {errors.password && (
