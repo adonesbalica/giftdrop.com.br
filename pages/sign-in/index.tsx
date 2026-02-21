@@ -25,7 +25,10 @@ export default function SignInPage() {
 
         <p className="mt-6 text-center text-sm text-(--muted-foreground)">
           Don&apos;t have an account?{" "}
-          <Link href="/sign-up" className="cursor-pointer text-(--primary) hover:opacity-80">
+          <Link
+            href="/sign-up"
+            className="cursor-pointer text-(--primary) hover:opacity-80"
+          >
             Create one
           </Link>
         </p>

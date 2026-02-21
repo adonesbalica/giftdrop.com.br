@@ -2,7 +2,10 @@ import { LogIn } from "lucide-react";
 import { AuthInput } from "../auth-input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { singUpFormSchema, type SingUpFormInputs } from "@/types/signup-form-types";
+import {
+  singUpFormSchema,
+  type SingUpFormInputs,
+} from "@/types/signup-form-types";
 
 export function SignUpForm() {
   const {
