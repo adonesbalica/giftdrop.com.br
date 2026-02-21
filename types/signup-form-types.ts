@@ -1,7 +1,7 @@
 import z from "zod";
 
 export type SignUpFormType = {
-  nickname: string,
+  nickname: string;
   email: string;
   password: string;
 };
